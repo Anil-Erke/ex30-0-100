@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Kronometre govdesi -->
+    <path
+        android:strokeColor="#4FC3F7"
+        android:strokeWidth="6"
+        android:pathData="M54,60 m-25,0 a25,25 0 1,0 50,0 a25,25 0 1,0 -50,0" />
+    <!-- Ust dugme ve sap -->
+    <path
+        android:strokeColor="#C7CEDB"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:pathData="M46,29 L62,29" />
+    <path
+        android:strokeColor="#C7CEDB"
+        android:strokeWidth="6"
+        android:pathData="M54,29 L54,35" />
+    <!-- Ivmelenme yayi: 0'dan 100'e -->
+    <path
+        android:strokeColor="#3FB950"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M36.3,42.3 A25,25 0 0,1 71.7,42.3" />
+    <!-- Ibre -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:pathData="M54,60 L69,47" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,60 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+</vector>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Android Automotive OS (arac icinde calisan) uygulamasi -->
+    <uses-feature
+        android:name="android.hardware.type.automotive"
+        android:required="true" />
+    <!-- Template host (Car App Library) gerektirir -->
+    <uses-feature
+        android:name="android.software.car.templates_host"
+        android:required="true" />
+
+    <!-- Olcumun kalbi: arac hizi. PERF_VEHICLE_SPEED + Car App Library Speed.
+         Baska arac verisi okunmadigi icin baska arac izni de istenmiyor. -->
+    <uses-permission android:name="android.car.permission.CAR_SPEED" />
+
+    <!-- Arac hizi hic gelmezse GPS yedegi devreye girer -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- Kronometre ekranini cizdigimiz Surface'e erisim icin zorunlu -->
+    <uses-permission android:name="androidx.car.app.ACCESS_SURFACE" />
+    <!-- NavigationTemplate kullanabilmek icin zorunlu -->
+    <uses-permission android:name="androidx.car.app.NAVIGATION_TEMPLATES" />
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@style/CarAppTheme">
+
+        <meta-data
+            android:name="androidx.car.app.minCarApiLevel"
+            android:value="1" />
+        <meta-data
+            android:name="com.android.automotive"
+            android:resource="@xml/automotive_app_desc" />
+
+        <!-- AAOS'ta template'leri ekrana basan launcher aktivitesi (kutuphaneden gelir) -->
+        <activity
+            android:name="androidx.car.app.activity.CarAppActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="distractionOptimized"
+                android:value="true" />
+        </activity>
+
+        <!--
+          Izin isteyen KENDI aktivitemiz (prompt.md §16.1).
+
+          `CarContext.requestPermissions` Android 15'te uygulamayi cokertiyor;
+          kutuphanenin kullandigi androidx.car.app.CarAppPermissionActivity
+          SAYDAM bir aktivite ve saydam aktivite + yonelim istegi bilinen bir
+          cokme sinifi. Supheli yolu teshis etmek yerine devre disi biraktik.
+
+          Tema BILEREK opak: saydam yapmak ayni cokmeyi geri getirir.
+          distractionOptimized BILEREK yok: izin diyalogu surus sirasinda
+          acilmamali, sistem engellesin (§4.2).
+        -->
+        <activity
+            android:name=".PermissionActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:theme="@style/CarAppTheme" />
+
+        <service
+            android:name=".SprintCarAppService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="androidx.car.app.CarAppService" />
+                <!-- Navigasyon kategorisi: surus sirasinda kullanilabilir + serbest cizim yuzeyi -->
+                <category android:name="androidx.car.app.category.NAVIGATION" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

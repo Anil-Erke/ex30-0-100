@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="#FFFFFF">
+    <!-- Kupa: rekor listesi -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M8,3 L16,3 L16,9 A4,4 0 0,1 8,9 Z" />
+    <path
+        android:strokeColor="@android:color/white"
+        android:strokeWidth="1.8"
+        android:pathData="M8,4.5 L5.5,4.5 A2.5,2.5 0 0,0 8,8.5" />
+    <path
+        android:strokeColor="@android:color/white"
+        android:strokeWidth="1.8"
+        android:pathData="M16,4.5 L18.5,4.5 A2.5,2.5 0 0,1 16,8.5" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M11,13 L13,13 L13,17 L11,17 Z" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M7.5,17 L16.5,17 L16.5,19.5 L7.5,19.5 Z" />
+</vector>
